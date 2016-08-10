@@ -27,15 +27,26 @@ int main()
 			Underscore += "_";
 		}
 	}
-
-	for (int i = 0; i != 50; ++i) {
-		cout << endl;
-	}
+	
+	
 
 	string guess;
 	int wrong = 0;
 
 	while (1) {
+		/*padding*/
+		system("CLS");
+
+		if (wrong >= 1)
+		cout << ";{";
+
+		if (wrong >= 2)
+		cout << ";{";
+
+		for (int i = 0; i != 10; ++i) {
+			cout << endl;
+		}
+
 		if (wrong == 6) {
 			cout << "You Lose! The word was: " << word << endl;
 			break;
