@@ -6,11 +6,15 @@ Do not use caps
 #include <iostream>
 #include <stdlib.h>
 #include <string>
+#include <fstream>
+
 using namespace std;
 
 void mainMenu();
 int ShowSubMenu();
 void playGame();
+void WriteToScoreFile(string, int);
+void ReadScoreFile();
 
 
 string userName;
@@ -30,7 +34,7 @@ int main()
 
 	return 0;
 }
-void PlayGame() {
+int PlayGame() {
 	cout << "Enter the word for other player to guess" << endl;
 
 	string word;
@@ -134,9 +138,10 @@ void PlayGame() {
 		}
 
 		if (wrong == 6) {
+
 			cout << "You Lose! The word was: " << word << endl;
 			cin.get();
-			break;
+			return (wrong);
 		}
 
 		cout << Underscore << endl;
@@ -146,7 +151,7 @@ void PlayGame() {
 		if (Underscore == word) {
 			cout << "You win!" << endl;
 			cin.get();
-			break;
+			return (wrong);
 		}
 
 		cout << "Guess a letter or a word" << endl;
@@ -155,7 +160,8 @@ void PlayGame() {
 		if (guess.length() > 1) {
 			if (guess == word) {
 				cout << "That's right, you win!" << endl;
-				break;
+				cin.get();
+				return (wrong);
 			}
 			else {
 				cout << "wrong word " << endl;
@@ -223,13 +229,13 @@ void mainMenu()
 			{
 			case 1:
 				cin.get();
-				PlayGame();
+				//returns wrongs
+
+				WriteToScoreFile(userName, PlayGame());
 				break;
 			case 2:
-				cout << "\nOption #2 was selected. Show the high score. \n";
-			//	readFileScore();
-				cout << "\nPress <Enter> key to continue ... ";
-				fflush(stdin);
+
+				ReadScoreFile();
 				cin.get();
 				cin.get();
 				break;
@@ -247,4 +253,29 @@ void mainMenu()
 	fflush(stdin);
 	cin.get();
 
+}
+void WriteToScoreFile(string user, int numberWrongs) {
+
+	ofstream myfile;
+	myfile.open("score.txt", ios_base::app);
+	myfile << user << "          " << numberWrongs <<"\n";
+	myfile.close();
+}
+void ReadScoreFile() {
+
+	system("CLS");
+	cout << "Name          Losses" << endl;
+	cout << "-----------------" << endl;
+	string line;
+	ifstream myfile("score.txt");
+	if (myfile.is_open())
+	{
+		while (getline(myfile, line))
+		{
+			cout << line << '\n';
+		}
+		myfile.close();
+	}
+
+	else cout << "Unable to open file";
 }
