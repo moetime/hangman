@@ -37,13 +37,64 @@ int main()
 		/*padding*/
 		system("CLS");
 
-		if (wrong >= 1)
-		cout << ";{";
+		if (wrong == 0) {
+			for (int i = 0; i != 7; ++i) {
+				cout << endl;
+			}
+		}
+		if (wrong >= 1) {
+			//first line
+			cout << "    =======" << endl;
+			//head
+			cout << "    ";
+			if (wrong >= 2) {
+				cout << "|";
+			}
+			else {
+				cout << " ";			}			cout << "    || " << endl;
+			
+			cout << "    ";
+			if (wrong >= 2) {
+				cout << "O";
+			}
+			else {
+				cout << " ";			}			cout << "    || " << endl;
+			//body
+			cout << "   ";
+			if (wrong >= 3) {
+				cout << "/";
+			}
+			else {
+				cout << " ";			}
+			if (wrong >= 2) {
+				cout << "|";
+			}
+			else {
+				cout << " ";			}			if (wrong >= 4) {
+				cout << "\\";
+			}
+			else {
+				cout << " ";			}			cout << "   || " << endl;
+			//legs
+			cout << "   ";
+			if (wrong >= 5) {
+				cout << "/";
+			}
+			else {
+				cout << " ";			}
+			cout << " ";			if (wrong >= 6) {
+				cout << "\\";
+			}
+			else {
+				cout << " ";			}			cout << "   || " << endl;
+			cout << "         ||" << endl;
+			cout << "===================" << endl;
 
-		if (wrong >= 2)
-		cout << ";{";
+			
+		}
 
-		for (int i = 0; i != 10; ++i) {
+		//writing padding
+		for (int i = 0; i != 3; ++i) {
 			cout << endl;
 		}
 
