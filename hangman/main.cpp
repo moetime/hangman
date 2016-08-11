@@ -4,11 +4,33 @@ Do not use caps
 */
 
 #include <iostream>
+#include <stdlib.h>
 #include <string>
 using namespace std;
 
+void mainMenu();
+int ShowSubMenu();
+void playGame();
+
+
+string userName;
+int score;
+int choice = 1;
 int main()
 {
+	//welcome message
+	cout << "Welcome to Hangman!" << endl;
+	//ask the user for their name
+	cout << "Enter your name" << endl;
+	cin >> userName;
+	//display menu
+	mainMenu();
+	cin.get();
+	cin.get();
+
+	return 0;
+}
+void PlayGame() {
 	cout << "Enter the word for other player to guess" << endl;
 
 	string word;
@@ -27,8 +49,8 @@ int main()
 			Underscore += "_";
 		}
 	}
-	
-	
+
+
 
 	string guess;
 	int wrong = 0;
@@ -54,7 +76,7 @@ int main()
 				cout << " ";
 			}
 			cout << "    || " << endl;
-			
+
 			cout << "    ";
 			if (wrong >= 2) {
 				cout << "O";
@@ -103,7 +125,7 @@ int main()
 			cout << "         ||" << endl;
 			cout << "===================" << endl;
 
-			
+
 		}
 
 		//writing padding
@@ -113,6 +135,7 @@ int main()
 
 		if (wrong == 6) {
 			cout << "You Lose! The word was: " << word << endl;
+			cin.get();
 			break;
 		}
 
@@ -122,6 +145,7 @@ int main()
 
 		if (Underscore == word) {
 			cout << "You win!" << endl;
+			cin.get();
 			break;
 		}
 
@@ -150,8 +174,77 @@ int main()
 		}
 		cout << endl;
 	}
-	cin.get();
+}
+
+int ShowMenu()
+{
+	int choice;
+	system("cls");
+	cout << "  	Hangman Menu\n";
+	cout << "= = = = = = = =\n";
+	cout << "  1  Play Game:\n";
+	cout << "  2  Show Score List:\n";
+	cout << "  3  End program: \n";
+	cout << "\nEnter your choice: ";
+	while (!(cin >> choice))
+	{
+		cout << "\nThat's invalid option, please try again."
+			<< "\nRe-Enter your choice: ";
+		cin.get();
+		cin.get();
+		cin.clear();
+		fflush(stdin);
+	}
+	return choice;
+
+} // end function ShowMenu
+
+void mainMenu()
+{
+	while (choice != 3)
+	{
+		do {
+			if (choice > 3 || choice <= 0)
+			{
+				cout << "\We don't have that option. Please select again. \n";
+				cout << "\nPress <Enter> key to continue ... ";
+				fflush(stdin);
+				cin.get();
+				cin.get();
+			}
+
+			choice = ShowMenu();
+
+		} while (choice < 0 || choice > 3);
+
+
+		if (choice != 3)
+			switch (choice)  // branch to an appropriate selection
+			{
+			case 1:
+				cin.get();
+				PlayGame();
+				break;
+			case 2:
+				cout << "\nOption #2 was selected. Show the high score. \n";
+			//	readFileScore();
+				cout << "\nPress <Enter> key to continue ... ";
+				fflush(stdin);
+				cin.get();
+				cin.get();
+				break;
+
+		
+			}
+		else //choice 3 was selected
+		{
+			cout << "\nprogram is over. Thanks for using.\n";
+			cout << "\nPress <Enter> key to end the program. ";
+		}
+
+
+	} // end of while 
+	fflush(stdin);
 	cin.get();
 
-	return 0;
 }
