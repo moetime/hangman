@@ -51,42 +51,55 @@ int main()
 				cout << "|";
 			}
 			else {
-				cout << " ";			}			cout << "    || " << endl;
+				cout << " ";
+			}
+			cout << "    || " << endl;
 			
 			cout << "    ";
 			if (wrong >= 2) {
 				cout << "O";
 			}
 			else {
-				cout << " ";			}			cout << "    || " << endl;
+				cout << " ";
+			}
+			cout << "    || " << endl;
 			//body
 			cout << "   ";
 			if (wrong >= 3) {
 				cout << "/";
 			}
 			else {
-				cout << " ";			}
+				cout << " ";
+			}
 			if (wrong >= 2) {
 				cout << "|";
 			}
 			else {
-				cout << " ";			}			if (wrong >= 4) {
+				cout << " ";
+			}
+			if (wrong >= 4) {
 				cout << "\\";
 			}
 			else {
-				cout << " ";			}			cout << "   || " << endl;
+				cout << " ";
+			}
+			cout << "   || " << endl;
 			//legs
 			cout << "   ";
 			if (wrong >= 5) {
 				cout << "/";
 			}
 			else {
-				cout << " ";			}
-			cout << " ";			if (wrong >= 6) {
+				cout << " ";
+			}
+			cout << " ";
+			if (wrong >= 6) {
 				cout << "\\";
 			}
 			else {
-				cout << " ";			}			cout << "   || " << endl;
+				cout << " ";
+			}
+			cout << "   || " << endl;
 			cout << "         ||" << endl;
 			cout << "===================" << endl;
 
